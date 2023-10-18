@@ -1,0 +1,20 @@
+public class LeadTriggerHandler {
+    Public static void createFollowUpTask(list<lead>leadlist, map<Id,Lead>oldLeadList){
+        list<Task>createTask = new list<Task>();
+        for(Lead objLead:leadlist){
+            if((objLead.ProductInterest__c !=oldLeadList.get(objLead.Id).ProductInterest__c)||oldLeadList==null){
+                Task T = new Task(
+                    WhoId= objLead.Id,
+                    Priority = 'low'
+                );
+                createTask.add(T);
+            }
+            
+        }
+        if(createTask.size()>0){
+            Insert createTask;
+        }
+    }
+    
+
+}
